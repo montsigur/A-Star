@@ -143,7 +143,7 @@ def A_Star(board):
     end_coords = board.getEndCoords()
     start_coords = board.getStart().getCoords()
 
-    current = board.getStart()
+    current = open_blocks[0]
     coords = current.getCoords()
 
     while len(open_blocks) > 0:
@@ -157,7 +157,7 @@ def A_Star(board):
                 if (x, y) not in open_coords and\
                     (x, y) not in closed_coords and\
                     (x, y) not in obstacles_coords and\
-                    0 <= x <= board_width and 0 <= y <= board_height:
+                    0 <= x <= board_width and 0 <= y <= board_height-1:
 
                     new_block = Block(x, y, current, end_coords)
                     new_coords = (x, y)
