@@ -157,6 +157,8 @@ def A_Star(board):
                 if (x, y) not in open_coords and\
                     (x, y) not in closed_coords and\
                     (x, y) not in obstacles_coords and\
+                    (x, y-dy) not in obstacles_coords and\
+                    (x-dx, y) not in obstacles_coords and\ 
                     0 <= x <= board_width and 0 <= y <= board_height-1:
 
                     new_block = Block(x, y, current, end_coords)
@@ -201,7 +203,9 @@ def A_Star(board):
                 y = coords[1] + dy
 
                 if (x, y) in open_coords and\
-                    0 < x <= board_width and 0 < y <= board_height:
+                   (x, y-dy) not in obstacles_coords and\
+                   (x-dx, y) not in obstacles_coords and\ 
+                0 <= x <= board_width and 0 <= y <= board_height-1:
 
                     index = open_coords.index((x, y))
                     block = open_blocks[index]
