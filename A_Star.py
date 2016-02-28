@@ -88,6 +88,7 @@ class Board(tk.Canvas):
            0 <= coords[1] < self.__height / self.__size:
             tag = int(self.__height / self.__size) * coords[0] + coords[1] + 1
             self.itemconfig(tag, fill=color_dict[state])
+            self.update_idletasks()
 
     def create_point(self, x, y):
         return tk.Canvas.create_line(self, x, y, x+1, y+1)
@@ -215,7 +216,7 @@ def A_Star(board):
 
         for dx in range(-1, 2):
             for dy in range(-1, 2):
-
+               
                 x = coords[0] + dx
                 y = coords[1] + dy
 
